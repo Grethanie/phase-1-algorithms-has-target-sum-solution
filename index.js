@@ -1,6 +1,34 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  let length = array.length;
+  // console.log("length:", length);
+  // for (let i = 0; i < length; i++) {
+  //   console.log("i: ", i);
+  //   let compliment = target - array[i];
+  //   console.log("compliment: ", compliment);
+  //   console.log("array[i]: ", array[i]);
+  //   if (array.includes(compliment) && compliment !== array[i]) {
+  //     console.log("true");
+  //     return true;
+  //   }
+  // }
+  // console.log("false");
+  // return false;
+
+  let memo = [];
+  for (let i = 0; i < length; i++) {
+    console.log("memo: ", memo);
+    console.log("num: ", array[i]);
+    let complement = target - array[i];
+    console.log("complement: ", complement);
+    if (memo.includes(complement)) {
+      return true;
+    }
+    memo.push(array[i]);
+  }
+  return false;
 }
+
+hasTargetSum([-7, 10, 4, 8], 3);
 
 /* 
   Write the Big O time complexity of your function here
@@ -8,6 +36,15 @@ function hasTargetSum(array, target) {
 
 /* 
   Add your pseudocode here
+
+  initialize newArray to keep record of what we have already iterated through
+
+  iterate through inputted array
+    initialize compliment 
+    if the compliment is in newArray, return true
+    if not, save current value to newArray
+
+  return false
 */
 
 /*
